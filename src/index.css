@@ -3,41 +3,49 @@
 /* ─── Tailwind v4 Theme Tokens ─────────────────────────────────────────────── */
 @theme {
   /* Backgrounds */
-  --color-bg:          #0A0F1A;
-  --color-surface:     #0D1526;
-  --color-surface-hi:  #111D33;
+  --color-bg: #0A0F1A;
+  --color-surface: #0D1526;
+  --color-surface-hi: #111D33;
 
   /* Accent */
-  --color-cyan:        #00D4FF;
-  --color-cyan-dim:    #0099BB;
+  --color-cyan: #00D4FF;
+  --color-cyan-dim: #0099BB;
 
   /* Text */
-  --color-primary:     #E8EDF7;
-  --color-muted:       #8892A4;
-  --color-dim:         #4A5568;
+  --color-primary: #E8EDF7;
+  --color-muted: #8892A4;
+  --color-dim: #4A5568;
 
   /* Amber for OT visual hint */
-  --color-amber:       #FFB84D;
+  --color-amber: #FFB84D;
 
   /* Fonts */
   --font-display: 'Space Grotesk', 'Noto Sans TC', ui-sans-serif, sans-serif;
-  --font-body:    'Inter', 'Noto Sans TC', ui-sans-serif, sans-serif;
-  --font-mono:    'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  --font-body: 'Inter', 'Noto Sans TC', ui-sans-serif, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
 }
 
 /* ─── CSS-only properties (not Tailwind utilities) ─────────────────────────── */
 :root {
-  --cyan-glow-sm:  0 0 12px rgba(0, 212, 255, 0.25);
-  --cyan-glow-md:  0 0 24px rgba(0, 212, 255, 0.20);
+  --cyan-glow-sm: 0 0 12px rgba(0, 212, 255, 0.25);
+  --cyan-glow-md: 0 0 24px rgba(0, 212, 255, 0.20);
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-normal: rgba(255, 255, 255, 0.13);
   --border-accent: rgba(0, 212, 255, 0.35);
 }
 
 /* ─── Global Base ───────────────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  font-size: 18px;
+  /* 預設是 16px，調這個所有 rem 單位等比放大 */
+}
 
 body {
   background-color: #0A0F1A;
@@ -53,20 +61,40 @@ body {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.65s cubic-bezier(0.22, 0.61, 0.36, 1),
-              transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+    transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
+
 .reveal.in-view {
   opacity: 1;
   transform: translateY(0);
 }
-.reveal-d1 { transition-delay: 0.08s; }
-.reveal-d2 { transition-delay: 0.16s; }
-.reveal-d3 { transition-delay: 0.24s; }
-.reveal-d4 { transition-delay: 0.32s; }
-.reveal-d5 { transition-delay: 0.40s; }
+
+.reveal-d1 {
+  transition-delay: 0.08s;
+}
+
+.reveal-d2 {
+  transition-delay: 0.16s;
+}
+
+.reveal-d3 {
+  transition-delay: 0.24s;
+}
+
+.reveal-d4 {
+  transition-delay: 0.32s;
+}
+
+.reveal-d5 {
+  transition-delay: 0.40s;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ─── Hero grid background ─────────────────────────────────────────────────── */
@@ -81,14 +109,29 @@ body {
 
 /* ─── Hero pulse rings ─────────────────────────────────────────────────────── */
 @keyframes pulse-ring {
-  0%   { transform: scale(0.9); opacity: 0.5; }
-  70%  { transform: scale(1.15); opacity: 0; }
-  100% { transform: scale(1.15); opacity: 0; }
+  0% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+
+  70% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
 }
+
 .pulse-ring {
   animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
 }
-.pulse-ring-2 { animation-delay: 1s; }
+
+.pulse-ring-2 {
+  animation-delay: 1s;
+}
 
 /* ─── Cyan separator glow ──────────────────────────────────────────────────── */
 .glow-text {
@@ -106,14 +149,12 @@ body {
 /* ─── Skill divider (vertical) ─────────────────────────────────────────────── */
 .skill-divider {
   width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(0, 212, 255, 0.4) 20%,
-    rgba(0, 212, 255, 0.6) 50%,
-    rgba(0, 212, 255, 0.4) 80%,
-    transparent
-  );
+  background: linear-gradient(to bottom,
+      transparent,
+      rgba(0, 212, 255, 0.4) 20%,
+      rgba(0, 212, 255, 0.6) 50%,
+      rgba(0, 212, 255, 0.4) 80%,
+      transparent);
   box-shadow: 0 0 8px rgba(0, 212, 255, 0.2);
 }
 
@@ -122,31 +163,48 @@ body {
   border: 1px solid var(--border-normal);
   transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
+
 .project-card:hover {
   border-color: var(--border-accent);
   box-shadow: 0 0 24px rgba(0, 212, 255, 0.08), 0 8px 32px rgba(0, 0, 0, 0.3);
   transform: translateY(-2px);
 }
+
 .project-card::before {
   content: '';
   position: absolute;
   inset: 0;
   top: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent);
   opacity: 0;
   transition: opacity 0.25s ease;
   border-radius: inherit;
 }
-.project-card:hover::before { opacity: 1; }
+
+.project-card:hover::before {
+  opacity: 1;
+}
 
 /* ─── Timeline experience ──────────────────────────────────────────────────── */
 .timeline-line {
-  background: linear-gradient(to bottom, #00D4FF, rgba(0,212,255,0.1));
+  background: linear-gradient(to bottom, #00D4FF, rgba(0, 212, 255, 0.1));
 }
 
 /* ─── Scrollbar ────────────────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0A0F1A; }
-::-webkit-scrollbar-thumb { background: rgba(0, 212, 255, 0.2); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(0, 212, 255, 0.4); }
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0F1A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.4);
+}

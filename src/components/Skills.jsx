@@ -3,13 +3,13 @@ import SectionTitle from "./SectionTitle";
 import SkillBadge from "./SkillBadge";
 
 const OT_SKILLS = [
-  { name: "Siemens SINUMERIK ONE", note: "生產環境" },
-  { name: "TIA Portal SCL / LAD", note: "生產環境" },
-  { name: "OPC-UA", note: "生產環境" },
-  { name: "SINAMICS Drives", note: null },
-  { name: "SLMP (Mitsubishi)", note: null },
-  { name: "Modbus / Serial", note: null },
-];
+  { name: 'Siemens SINUMERIK ONE', note: '生產環境' },
+  { name: 'TIA Portal SCL / LAD',  note: '生產環境' },
+  { name: 'OPC-UA',                note: '生產環境' },
+  { name: 'SINAMICS S120 / G120',  note: '業界講師認證' },
+  { name: 'Mitsubishi iQ-R / FX5U', note: null },
+  { name: 'SLMP / Modbus RTU',     note: null },
+]
 
 const IT_SKILLS = [
   { name: "Python", note: null },
@@ -22,8 +22,18 @@ const IT_SKILLS = [
   { name: "Machine Learning", note: null },
 ];
 
-const OT_TAGS = ["CNC", "PLC", "HMI", "SCADA", "Servo", "Fieldbus"];
+const OT_TAGS = ['CNC', 'PLC', 'HMI', 'SCADA', 'Beckhoff', 'MR-J4', 'ET200SP', 'Fieldbus']
 const IT_TAGS = ["LLM", "RAG", "CI/CD", "SQLite", "WebSocket", "SSE"];
+
+const WORKFLOW = [
+  {
+    name: "AI 協作開發",
+    desc: "以 Claude / GPT 為開發搭檔，負責架構決策與品質審查",
+  },
+  { name: "GitHub Actions", desc: "多平台 CI/CD 自動建置與發布" },
+  { name: "Docker Compose", desc: "本地開發與生產環境容器化" },
+  { name: "Conda / venv", desc: "Python 多環境隔離管理" },
+];
 
 function SkillItem({ name, note, variant, delay }) {
   const [ref, inView] = useInView(0.1);
@@ -31,7 +41,9 @@ function SkillItem({ name, note, variant, delay }) {
   return (
     <div
       ref={ref}
-      className={`reveal ${inView ? "in-view" : ""} flex items-center justify-between py-2 border-b border-white/[0.06]`}
+      className={`reveal ${
+        inView ? "in-view" : ""
+      } flex items-center justify-between py-2 border-b border-white/[0.06]`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <span className="text-sm text-primary">{name}</span>
@@ -108,7 +120,9 @@ export default function Skills() {
           <div className="flex-1">
             {/* Column header */}
             <div
-              className={`reveal ${headerInView ? "in-view reveal-d2" : ""} mb-8`}
+              className={`reveal ${
+                headerInView ? "in-view reveal-d2" : ""
+              } mb-8`}
             >
               <div className="flex items-center gap-3 mb-1">
                 <span className="w-2 h-2 rounded-full bg-cyan/70 flex-shrink-0" />
@@ -139,6 +153,27 @@ export default function Skills() {
                 <SkillBadge key={t} name={t} variant="it" />
               ))}
             </div>
+          </div>
+        </div>
+
+        <div className="mt-16 pt-10 border-t border-white/[0.07]">
+          <p className="text-xs font-mono tracking-[0.18em] uppercase text-dim mb-6">
+            Dev Workflow
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {WORKFLOW.map((item, i) => (
+              <div
+                key={item.name}
+                className="rounded-lg border border-white/[0.08] bg-white/[0.02] px-4 py-3"
+              >
+                <p className="text-sm font-medium text-primary mb-1">
+                  {item.name}
+                </p>
+                <p className="text-xs text-muted leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

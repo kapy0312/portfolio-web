@@ -3,25 +3,25 @@ import SectionTitle from './SectionTitle'
 
 const EXPERIENCES = [
   {
-    period: '2022 — 現在',
+    period: '2023/03 — 現在',
     role: 'CIM / 工業 AI 工程師',
-    company: '製造業（台中）',
-    desc: '負責多站 CNC 拋光系統 PLC / HMI 開發（SINUMERIK ONE + TIA Portal），同時主導 IIoT SCADA 平台全端建置，整合 OPC-UA、SLMP、TimescaleDB 與 Ollama AI 診斷。',
-    tags: ['SINUMERIK ONE', 'TIA Portal', 'OPC-UA', 'FastAPI', 'React'],
+    company: '製造業（台中，金屬加工用機械製造）',
+    desc: '負責多站 CNC 拋光系統 PLC / HMI 開發（SINUMERIK ONE + TIA Portal），同時主導 IIoT SCADA 平台全端建置，整合 OPC-UA、SLMP、TimescaleDB 與 Ollama LLM AI 診斷。以 AI 協作開發方式推進軟體全端專案。',
+    tags: ['SINUMERIK ONE', 'TIA Portal', 'OPC-UA', 'FastAPI', 'React', 'Ollama'],
   },
   {
-    period: '20XX — 20XX',
-    role: '職位名稱',
-    company: '公司名稱（預留）',
-    desc: '工作內容描述——此為預留位置，依實際經歷填入。',
-    tags: [],
+    period: '2020/12 — 現在',
+    role: '西門子業界講師',
+    company: '勞動部勞動力發展署 中彰投分署',
+    desc: '受政府機構認證，擔任西門子技術課程業界講師，開設伺服馬達控制應用班、西門子 PLC 基礎班及青年專班課程，培訓電控領域技術人才。',
+    tags: ['SINUMERIK', 'SINAMICS', 'S120', 'TIA Portal', '伺服馬達'],
   },
   {
-    period: '20XX — 20XX',
-    role: '職位名稱',
-    company: '公司名稱（預留）',
-    desc: '工作內容描述——此為預留位置，依實際經歷填入。',
-    tags: [],
+    period: '2018/09 — 2023/03',
+    role: 'PLC 電控工程師',
+    company: '銓瑩電機有限公司',
+    desc: '4 年 7 個月，跨產業自動化控制系統設計與實施。涵蓋五軸拋光機（Beckhoff CNC）、金屬製管機追剪（Siemens 1511T 電子凸輪）、玻璃雙邊機（三菱 iQ-R）、立式搪磨機、深孔加工機等多類機種，橫跨 Siemens、Mitsubishi、Omron、Beckhoff 四大平台。',
+    tags: ['Siemens S7-1511T', 'Mitsubishi iQ-R', 'Beckhoff CNC', 'Omron NX1P2', 'Modbus RTU'],
   },
 ]
 
