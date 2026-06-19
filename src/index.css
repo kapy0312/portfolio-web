@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+/* ─── Tailwind v4 Theme Tokens ─────────────────────────────────────────────── */
+@theme {
+  /* Backgrounds */
+  --color-bg:          #0A0F1A;
+  --color-surface:     #0D1526;
+  --color-surface-hi:  #111D33;
+
+  /* Accent */
+  --color-cyan:        #00D4FF;
+  --color-cyan-dim:    #0099BB;
+
+  /* Text */
+  --color-primary:     #E8EDF7;
+  --color-muted:       #8892A4;
+  --color-dim:         #4A5568;
+
+  /* Amber for OT visual hint */
+  --color-amber:       #FFB84D;
+
+  /* Fonts */
+  --font-display: 'Space Grotesk', 'Noto Sans TC', ui-sans-serif, sans-serif;
+  --font-body:    'Inter', 'Noto Sans TC', ui-sans-serif, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+}
+
+/* ─── CSS-only properties (not Tailwind utilities) ─────────────────────────── */
+:root {
+  --cyan-glow-sm:  0 0 12px rgba(0, 212, 255, 0.25);
+  --cyan-glow-md:  0 0 24px rgba(0, 212, 255, 0.20);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-normal: rgba(255, 255, 255, 0.13);
+  --border-accent: rgba(0, 212, 255, 0.35);
+}
+
+/* ─── Global Base ───────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #0A0F1A;
+  color: #E8EDF7;
+  font-family: 'Inter', 'Noto Sans TC', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Scroll-reveal system ─────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+.reveal-d5 { transition-delay: 0.40s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ─── Hero grid background ─────────────────────────────────────────────────── */
+.hero-grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 40%, black 0%, transparent 100%);
+  mask-image: radial-gradient(ellipse 85% 70% at 50% 40%, black 0%, transparent 100%);
+}
+
+/* ─── Hero pulse rings ─────────────────────────────────────────────────────── */
+@keyframes pulse-ring {
+  0%   { transform: scale(0.9); opacity: 0.5; }
+  70%  { transform: scale(1.15); opacity: 0; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+.pulse-ring {
+  animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+.pulse-ring-2 { animation-delay: 1s; }
+
+/* ─── Cyan separator glow ──────────────────────────────────────────────────── */
+.glow-text {
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(0, 212, 255, 0.3);
+}
+
+/* ─── Section divider line ─────────────────────────────────────────────────── */
+.section-divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, #00D4FF, transparent);
+  border-radius: 1px;
+}
+
+/* ─── Skill divider (vertical) ─────────────────────────────────────────────── */
+.skill-divider {
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 212, 255, 0.4) 20%,
+    rgba(0, 212, 255, 0.6) 50%,
+    rgba(0, 212, 255, 0.4) 80%,
+    transparent
+  );
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.2);
+}
+
+/* ─── Project card hover ───────────────────────────────────────────────────── */
+.project-card {
+  border: 1px solid var(--border-normal);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.project-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.08), 0 8px 32px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.5), transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  border-radius: inherit;
+}
+.project-card:hover::before { opacity: 1; }
+
+/* ─── Timeline experience ──────────────────────────────────────────────────── */
+.timeline-line {
+  background: linear-gradient(to bottom, #00D4FF, rgba(0,212,255,0.1));
+}
+
+/* ─── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A0F1A; }
+::-webkit-scrollbar-thumb { background: rgba(0, 212, 255, 0.2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 212, 255, 0.4); }
